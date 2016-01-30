@@ -116,7 +116,7 @@ public class DoorInteract : MonoBehaviour, IInteract {
 	void Update () {
 
 
-		if (Input.GetKeyDown(KeyCode.E))
+		if (Input.GetButtonDown("Fire1"))
 		{
 			interact();
 	

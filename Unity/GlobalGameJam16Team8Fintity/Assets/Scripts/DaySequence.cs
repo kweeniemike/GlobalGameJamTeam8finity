@@ -3,9 +3,7 @@ using System.Collections;
 
 public class DaySequence : MonoBehaviour {
 
-	
-
-	private enum Sequences { Opstaan, TandenPoetsen, Eten, TvKijken, Slapen};
+	private enum Sequences { Opstaan, Eten, TandenPoetsen, TvKijken, Slapen};
 	[SerializeField] static private Sequences sequences;// {get; set;}
 
 	static private int currentSequence;
@@ -13,11 +11,11 @@ public class DaySequence : MonoBehaviour {
 	{get; private set;}
 
 	public string SequencePhase;
-
+    public static Light directionLight; // you are here
 	void awake()
 	{
 		currentSequence = 0;
-
+        directionLight = GetComponent<Light>();
 	}
 
 	// Use this for initialization
@@ -50,6 +48,10 @@ public class DaySequence : MonoBehaviour {
         {
             int levelToLoad = Application.loadedLevel + 1;
             Application.LoadLevel(levelToLoad);
+        }
+        else if(tag == "TvKijken" && sequences.ToString() == "TvKijken")
+        {
+            //directionLight.GetComponent<DayNightTransition>().DayToNight();
         }
         if (tag == sequences.ToString())
         {
