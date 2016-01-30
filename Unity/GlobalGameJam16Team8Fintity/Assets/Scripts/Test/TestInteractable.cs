@@ -5,10 +5,17 @@ using System;
 public class TestInteractable : MonoBehaviour, IInteract {
     public Material material;
     public String woord;
+    //public SoundManager soundManager;
+    //public AudioClip audioClip;
 
     public void interact()
     {
         DaySequence.NextSequence(woord);
+
+        /*if (audioClip != null)
+        {
+            soundManager.PlaySingle(audioClip);
+        }*/
     }
 
     // Use this for initialization

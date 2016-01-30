@@ -12,10 +12,11 @@ public class DaySequence : MonoBehaviour {
 
 	public string SequencePhase;
     public static Light directionLight; // you are here
-	void awake()
+	void Awake()
 	{
 		currentSequence = 0;
         directionLight = GetComponent<Light>();
+        Debug.Log(directionLight);
 	}
 
 	// Use this for initialization
@@ -27,13 +28,13 @@ public class DaySequence : MonoBehaviour {
 	void Update () {
 
 
-		if( Input.GetKeyDown(KeyCode.Space))
+		/*if( Input.GetKeyDown(KeyCode.Space))
 		{
 			Debug.Log (sequences.ToString());
 			NextSequence(SequencePhase);
 			Debug.Log (sequences.ToString());
 			
-		}
+		}*/
 
 		currentSequence = CurrentSequence;
 		sequences = (Sequences)CurrentSequence;
@@ -42,23 +43,27 @@ public class DaySequence : MonoBehaviour {
 	}
 
 
-    static public void NextSequence(string tag)
+    static public bool NextSequence(string tag)
     {
         if (tag == "Slapen" && sequences.ToString() == "Slapen")
         {
+            CurrentSequence = 0;
+            sequences = Sequences.Opstaan;
             int levelToLoad = Application.loadedLevel + 1;
             Application.LoadLevel(levelToLoad);
         }
         else if(tag == "TvKijken" && sequences.ToString() == "TvKijken")
         {
-            //directionLight.GetComponent<DayNightTransition>().DayToNight();
+            directionLight.GetComponent<DayNightTransition>().DayToNight();
         }
         if (tag == sequences.ToString())
         {
             Debug.Log(tag);
             CurrentSequence += 1;
             sequences = (Sequences)CurrentSequence;
+            return true;
         }
+        return false;
 
     }
 }

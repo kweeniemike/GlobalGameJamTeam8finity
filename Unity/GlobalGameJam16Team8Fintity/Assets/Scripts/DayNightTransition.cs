@@ -32,9 +32,11 @@ public class DayNightTransition : MonoBehaviour {
         Quaternion up = Quaternion.LookRotation(Vector3.up, Vector3.forward);
         while (transistionGoing)
         {
+            directionalLight.intensity = Mathf.Lerp(directionalLight.intensity, 0f, Time.deltaTime * 0.001f * speed);
             directionalLight.transform.rotation = Quaternion.Lerp(directionalLight.transform.rotation, up, Time.deltaTime * speed);
-            if(directionalLight.transform.rotation == up)
-            {
+            if(directionalLight.intensity <= 0.1f)
+            { 
+                directionalLight.enabled = false;
                 transistionGoing = false;
             }
             yield return null;
