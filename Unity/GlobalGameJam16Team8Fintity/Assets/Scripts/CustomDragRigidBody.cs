@@ -5,7 +5,7 @@ public class CustomDragRigidBody : MonoBehaviour
 {
     public float objectDistance = 1.5f;
 
-    const float k_Spring = 10000.0f;
+    const float k_Spring = 50.0f;
     const float k_Damper = 5.0f;
     const float k_Drag = 10.0f;
     const float k_AngularDrag = 5.0f;
