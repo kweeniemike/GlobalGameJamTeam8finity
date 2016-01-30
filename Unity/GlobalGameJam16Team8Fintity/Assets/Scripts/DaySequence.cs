@@ -44,18 +44,19 @@ public class DaySequence : MonoBehaviour {
 	}
 
 
-	static public void NextSequence(string tag)
-	{
-		if ( tag == "Slapen" &&  sequences.ToString() == "slapen")
-		{
-			int levelToLoad = Application.loadedLevel + 1;
-			Application.LoadLevel(levelToLoad);
-		}
-		if ( tag == sequences.ToString())
-		{
-		CurrentSequence += 1;
-		sequences = (Sequences)CurrentSequence;
-		}
+    static public void NextSequence(string tag)
+    {
+        if (tag == "Slapen" && sequences.ToString() == "Slapen")
+        {
+            int levelToLoad = Application.loadedLevel + 1;
+            Application.LoadLevel(levelToLoad);
+        }
+        if (tag == sequences.ToString())
+        {
+            Debug.Log(tag);
+            CurrentSequence += 1;
+            sequences = (Sequences)CurrentSequence;
+        }
 
-	}
+    }
 }

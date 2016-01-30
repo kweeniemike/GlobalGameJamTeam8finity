@@ -4,18 +4,11 @@ using System;
 
 public class TestInteractable : MonoBehaviour, IInteract {
     public Material material;
+    public String woord;
 
     public void interact()
     {
-        Debug.Log("Stuff");
-        if (material.color == Color.blue)
-        {
-            material.SetColor("_Color", Color.red);
-        }
-        else
-        {
-            material.SetColor("_Color", Color.blue);
-        }
+        DaySequence.NextSequence(woord);
     }
 
     // Use this for initialization
