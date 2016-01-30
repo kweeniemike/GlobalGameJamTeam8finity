@@ -35,11 +35,21 @@ public class CustomDragRigidBody : MonoBehaviour
         {
             return;
         }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            IInteract interactScript = hit.collider.gameObject.GetComponent<IInteract>();
+            if (interactScript != null)
+            {
+                interactScript.interact();
+                return;
+            }
+        }
         // We need to hit a rigidbody that is not kinematic
         if (!hit.rigidbody || hit.rigidbody.isKinematic)
         {
             return;
         }
+        
 
         if (!m_SpringJoint)
         {
@@ -66,9 +76,9 @@ public class CustomDragRigidBody : MonoBehaviour
     private IEnumerator DragObject(float distance)
     {
         isDragging = true;
-        Debug.Log(m_SpringJoint.connectedBody.drag);
+        //Debug.Log(m_SpringJoint.connectedBody.drag);
         var oldDrag = m_SpringJoint.connectedBody.drag;
-        Debug.Log(m_SpringJoint.connectedBody.drag);
+        //Debug.Log(m_SpringJoint.connectedBody.drag);
         var oldAngularDrag = m_SpringJoint.connectedBody.angularDrag;
         m_SpringJoint.connectedBody.drag = k_Drag;
         m_SpringJoint.connectedBody.angularDrag = k_AngularDrag;
