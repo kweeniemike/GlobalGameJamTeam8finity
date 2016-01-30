@@ -10,6 +10,8 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Cylinder.006
+    4300002: Cylinder.007
+    4300004: Plane.007
   materials:
     importMaterials: 1
     materialName: 0
